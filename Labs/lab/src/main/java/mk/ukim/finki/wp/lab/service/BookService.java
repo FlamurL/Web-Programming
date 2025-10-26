@@ -1,9 +1,0 @@
-package mk.ukim.finki.wp.lab.service;
-import mk.ukim.finki.wp.lab.model.Book;
-
-import java.util.*;
-
-public interface BookService {
-    List<Book> listAll();
-    List<Book> searchBooks(String text, Double rating);
-}
