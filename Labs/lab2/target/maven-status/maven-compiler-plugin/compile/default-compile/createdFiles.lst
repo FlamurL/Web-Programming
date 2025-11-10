@@ -1,0 +1,14 @@
+mk\ukim\finki\wp\lab\LabApplication.class
+mk\ukim\finki\wp\lab\web\BookReservationServlet.class
+mk\ukim\finki\wp\lab\model\BookReservation.class
+mk\ukim\finki\wp\lab\repository\BookRepository.class
+mk\ukim\finki\wp\lab\repository\BookReservationRepository.class
+mk\ukim\finki\wp\lab\bootstrap\DataHolder.class
+mk\ukim\finki\wp\lab\repository\InMemoryBookRepository.class
+mk\ukim\finki\wp\lab\web\BookListServlet.class
+mk\ukim\finki\wp\lab\service\BookService.class
+mk\ukim\finki\wp\lab\service\impl\BookReservationServiceImpl.class
+mk\ukim\finki\wp\lab\service\impl\BookServiceImpl.class
+mk\ukim\finki\wp\lab\model\Book.class
+mk\ukim\finki\wp\lab\repository\InMemoryBookReservationRepository.class
+mk\ukim\finki\wp\lab\service\BookReservationService.class
