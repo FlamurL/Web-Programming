@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors</title>
+</head>
+<body>
+
+<h1>Authors</h1>
+
+<!-- Error message -->
+<div th:if="${error != null}" style="color:red">
+    <p th:text="${error}"></p>
+</div>
+
+<!-- Add new author -->
+<a href="/authors/author-form">
+    <button type="button">Add new Author</button>
+</a>
+
+<br><br>
+
+<!-- Authors table -->
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Country</th>
+        <th>Biography</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="author : ${authors}">
+        <td th:text="${author.name}"></td>
+        <td th:text="${author.surname}"></td>
+        <td th:text="${author.country}"></td>
+        <td th:text="${author.biography}"></td>
+        <td>
+
+            <!-- Edit -->
+            <a th:href="@{'/authors/author-form/' + ${author.id}}">
+                <button type="button">Edit</button>
+            </a>
+
+            <!-- Delete -->
+            <form th:action="@{'/authors/delete/' + ${author.id}}"
+                  method="post" style="display:inline;">
+                <button type="submit"
+                        onclick="return confirm('Delete this author?')">
+                    Delete
+                </button>
+            </form>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<a href="/books"><button>Back to Books</button></a>
+
+</body>
+</html>

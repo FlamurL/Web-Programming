@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${author != null ? 'Edit Author' : 'Add New Author'}">Author Form</title>
+    <style>
+        body {
+            width: 600px;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        .button-group {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+        .btn-success {
+            background-color: #28a745;
+            flex: 1;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            flex: 1;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            flex: 1;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1 th:text="${author != null ? 'Edit Author' : 'Add New Author'}">Author Form</h1>
+
+<form method="POST" th:action="@{${author != null} ? '/authors/edit/' + ${author.id} : '/authors/add'}">
+    <div class="form-group">
+        <label for="name">Author First Name</label>
+        <input type="text"
+               id="name"
+               name="name"
+               th:value="${author != null ? author.getName() : ''}"
+               placeholder="Enter first name"
+               required>
+    </div>
+
+    <div class="form-group">
+        <label for="surname">Author Last Name</label>
+        <input type="text"
+               id="surname"
+               name="surname"
+               th:value="${author != null ? author.getSurname() : ''}"
+               placeholder="Enter last name"
+               required>
+    </div>
+
+    <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text"
+               id="country"
+               name="country"
+               th:value="${author != null ? author.getCountry() : ''}"
+               placeholder="Enter country"
+               required>
+    </div>
+
+    <div class="form-group">
+        <label for="biography">Biography</label>
+        <textarea id="biography"
+                  name="biography"
+                  th:text="${author != null ? author.getBiography() : ''}"
+                  placeholder="Enter author biography"
+                  required></textarea>
+    </div>
+
+    <div class="button-group">
+        <button id="submit" type="submit" class="btn btn-success"
+                th:text="${author != null ? 'Update Author' : 'Add Author'}">
+            Submit
+        </button>
+        <a id="back" href="/authors" class="btn btn-secondary">Back to Authors</a>
+        <a href="/books" class="btn btn-primary">Go to Home Page</a>
+    </div>
+</form>
+
+</body>
+</html>

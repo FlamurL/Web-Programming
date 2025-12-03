@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang= "en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book form</title>
+</head>
+<body>
+
+<form method="post" th:action="@{${book != null} ? '/books/edit/' + ${book.id} : '/books/add'}">
+    <div>
+        <label for="title">Book title</label>
+        <input type="text"
+            id="title"
+            name="title"
+            th:value="${book != null ? book.getTitle() : ''}"
+        required>
+    </div>
+    <div>
+        <label for="genre">Book genre</label>
+        <input type="text"
+               id="genre"
+               name="genre"
+               th:value="${book != null ? book.getGenre() : ''}"
+               required>
+    </div>
+    <div>
+        <label for="averageRating">Book average rating</label>
+        <input type="text"
+               id="averageRating"
+               name="averageRating"
+               th:value="${book != null ? book.getAverageRating() : ''}"
+               required>
+    </div>
+    <div>
+        <label for="authorId">Book Author</label>
+        <select name="authorId" id="authorId">
+            <option th:each="author: ${authors}"
+                    th:value="${author.id}"
+                    th:text="${author.name + ' ' + author.surname + ' (' + author.country + ')'}"
+                    th:selected="${book != null && book.author != null && book.author.id == author.id}">
+            </option>
+        </select>
+    </div>
+
+    <button id="submit" type="submit">Submit</button>
+    <a id="back" href="/books" type="button" class="btn btn-primary">Back to Books</a>
+</form>
+
+</body>
+</html>
